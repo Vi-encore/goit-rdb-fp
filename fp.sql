@@ -82,7 +82,7 @@ SELECT
 FROM
     infectious_cases_normalized AS ic_norm
         JOIN
-    countries AS c ON ic_norm.id = c.id
+    countries AS c ON ic_norm.country_id = c.id
 WHERE
     ic_norm.Number_rabies IS NOT NULL
 GROUP BY c.entity , c.code , c.id
