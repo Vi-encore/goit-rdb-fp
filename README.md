@@ -8,7 +8,7 @@
 
 ### Завдання 1
 
- Завантажте дані:
+Завантажте дані:
 
 - Створіть схему pandemic у базі даних за допомогою SQL-команди.
 - Оберіть її як схему за замовчуванням за допомогою SQL-команди.
@@ -29,7 +29,7 @@ SELECT * FROM infectious_cases;
 
 Нормалізуйте таблицю infectious_cases до 3ї нормальної форми. Збережіть у цій же схемі дві таблиці з нормалізованими даними.
 
-*Виконайте запит SELECT COUNT(***) FROM infectious_cases , щоб ментор міг зрозуміти, скільки записів ви завантажили у базу даних із файла.*
+\*Виконайте запит SELECT COUNT(_\*\*) FROM infectious_cases , щоб ментор міг зрозуміти, скільки записів ви завантажили у базу даних із файла._
 
 ```
 drop table if exists countries;
@@ -91,7 +91,7 @@ FROM infectious_cases ic
 JOIN countries c
     ON ic.Entity = c.entity
     AND ic.Code = c.code;
-    
+
 select count(*) as ic_raw from infectious_cases;
 select count(*) as c_norm from countries;
 select count(*)  as ic_norm from infectious_cases_normalized;
@@ -101,24 +101,23 @@ select count(*)  as ic_norm from infectious_cases_normalized;
 ![task 2](p2_2_ic_norm_create.png)
 ![task 2](p2_3_ic_norm_populate.png)
 
-*Результати*
+_Результати_
 
 ![task 2](p2_4_1_ic_raw.png)
 ![task 2](p2_4_2_countries.png)
 ![task 2](p2_4_3_ic_norm.png)
-
 
 ### Завдання 3
 
 Проаналізуйте дані:
 
 - Для кожної унікальної комбінації Entity та Code або їх id порахуйте середнє, мінімальне, максимальне значення та суму для атрибута Number_rabies.
-*💡 Врахуйте, що атрибут Number_rabies може містити порожні значення ‘’ — вам попередньо необхідно їх відфільтрувати.*
+  _💡 Врахуйте, що атрибут Number_rabies може містити порожні значення ‘’ — вам попередньо необхідно їх відфільтрувати._
 - Результат відсортуйте за порахованим середнім значенням у порядку спадання.
 - Оберіть тільки 10 рядків для виведення на екран.
 
 ```
-SELECT 
+SELECT
     c.entity,
     c.code,
     c.id,
@@ -137,21 +136,22 @@ ORDER BY avg_rabies DESC
 LIMIT 10;
 ```
 
-![task 3](p3_data_analysis.png)
+![task 3](p3_data_analisys.png)
 
 ### Завдання 4
 
 Побудуйте колонку різниці в роках.
 
 Для оригінальної або нормованої таблиці для колонки Year побудуйте з використанням вбудованих SQL-функцій:
+
 - атрибут, що створює дату першого січня відповідного року,
-*💡 Наприклад, якщо атрибут містить значення ’1996’, то значення нового атрибута має бути ‘1996-01-01’.*
+  _💡 Наприклад, якщо атрибут містить значення ’1996’, то значення нового атрибута має бути ‘1996-01-01’._
 - атрибут, що дорівнює поточній даті,
 - атрибут, що дорівнює різниці в роках двох вищезгаданих колонок.
-*💡 Перераховувати всі інші атрибути, такі як Number_malaria, не потрібно.*
+  _💡 Перераховувати всі інші атрибути, такі як Number_malaria, не потрібно._
 
 ```
-SELECT 
+SELECT
     id,
     year,
     MAKEDATE(year, 1) AS first_day_year,
@@ -218,7 +218,7 @@ end
 
 delimiter ;
 
-SELECT 
+SELECT
     c.entity,
     ic_norm.year,
     ic_norm.Number_tuberculosis AS n_tuberculosis,
