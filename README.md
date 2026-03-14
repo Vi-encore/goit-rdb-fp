@@ -102,6 +102,7 @@ select count(*)  as ic_norm from infectious_cases_normalized;
 ![task 2](p2_3_ic_norm_populate.png)
 
 *Результати*
+
 ![task 2](p2_4_1_ic_raw.png)
 ![task 2](p2_4_2_countries.png)
 ![task 2](p2_4_3_ic_norm.png)
